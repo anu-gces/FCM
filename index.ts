@@ -44,7 +44,7 @@ app.post("/send-fcm", async (req, res) => {
     const response = await admin.messaging().sendEach(
       tokens.map((token) => ({
         token,
-        data: {
+        notification: {
           title: "New Order!",
           body: "You have a new order in CakeCafe!",
         },

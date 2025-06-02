@@ -3,7 +3,7 @@ import admin from "firebase-admin";
 //@ts-ignore
 import cors from "cors";
 
-const serviceAccount = JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT || "{}");
+const serviceAccount = require("./siru-res-pos-firebase-adminsdk-7wlis-699fcf38fd.json");
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount as admin.ServiceAccount),
@@ -14,11 +14,11 @@ const PORT = process.env.PORT || 3001;
 app.use(express.json()); // <-- Add this line!
 app.use(cors()); // <-- Add this line before your routes
 
-app.get("/", (_req: any, res: any) => {
+app.get("/", (_req, res) => {
   res.send("Hello, TypeScript Express!");
 });
 
-app.post("/send-fcm", async (req: any, res: any) => {
+app.post("/send-fcm", async (req, res) => {
   const { tokens } = req.body;
   if (!Array.isArray(tokens) || tokens.length === 0) {
     res.status(400).json({ error: "token required" });

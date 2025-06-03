@@ -47,6 +47,7 @@ app.post("/send-fcm", async (req, res) => {
         notification: {
           title: "New Order!",
           body: "You have a new order in CakeCafe!",
+          icon: "https://cake-cafe-pokhara.vercel.app/CakeCafeLogo.png", // Full URL required
         },
       }))
     );

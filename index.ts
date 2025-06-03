@@ -44,16 +44,11 @@ app.post("/send-fcm", async (req, res) => {
     const response = await admin.messaging().sendEach(
       tokens.map((token) => ({
         token,
-        notification: {
+        data: {
           title: "New Order!",
           body: "You have a new order in CakeCafe!",
-          icon: "https://cake-cafe-pokhara.vercel.app/CakeCafe.png",
         },
-        webpush: {
-          notification: {
-            icon: "https://cake-cafe-pokhara.vercel.app/CakeCafe.png", // Correct place for icon on web
-          },
-        },
+        
       }))
     );
     res.json({ success: true, response });

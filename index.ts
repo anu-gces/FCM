@@ -28,8 +28,8 @@ admin.initializeApp({
 
 const app = express();
 const PORT = process.env.PORT || 3001;
-app.use(express.json()); // <-- Add this line!
-app.use(cors()); // <-- Add this line before your routes
+app.use(express.json());
+app.use(cors());
 
 app.get("/", (_req: Request, res: Response) => {
   res.send("Hello, TypeScript Express!");

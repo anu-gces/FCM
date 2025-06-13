@@ -1,6 +1,7 @@
 import express from "express";
 import admin from "firebase-admin";
 import { config } from "dotenv";
+import { Request, Response } from "express-serve-static-core";
 
 //@ts-ignore
 import cors from "cors";
@@ -30,7 +31,7 @@ const PORT = process.env.PORT || 3001;
 app.use(express.json()); // <-- Add this line!
 app.use(cors()); // <-- Add this line before your routes
 
-app.get("/", (_req, res) => {
+app.get("/", (_req: Request, res: Response) => {
   res.send("Hello, TypeScript Express!");
 });
 
@@ -48,7 +49,6 @@ app.post("/send-fcm", async (req, res) => {
           title: "New Order!",
           body: "You have a new order in CakeCafe!",
         },
-        
       }))
     );
     res.json({ success: true, response });
